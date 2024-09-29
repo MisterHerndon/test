@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>User Select</title>
+    </head>
+    <style>
+        .container {
+            height: 100%;
+            width: 100%;
+            padding: 2rem;
+        }
+        .form {
+            max-width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .paragraph {
+            width: 30rem;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+    <body>
+        <div class="container">
+            <div class="form">
+                <label for="selection">Select the number of paragraphs</label>
+                <select id="selection" name=""selection onchange="getParagraph()">
+                    <option value="0">1 Paragraph</option>
+                    <option value="1">2 Paragraphs</option>
+                    <option value="2">3 Paragraphs</option>
+                    <option value="3">4 Paragraphs</option>
+                    <option value="4" selected>5 Paragraphs</option>
+                </select>
+            </div>
+            <p class="paragraph"></p>
+        </div>
+        <script>
+            const paragraphs = [
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum lacus sapien, semper a sapien eu, gravida pellentesque mi. Suspendisse blandit, augue et consequat molestie, est ipsum condimentum eros, quis venenatis massa odio in neque. Morbi faucibus, erat ac malesuada ullamcorper, tellus eros mollis ex, et feugiat libero mi eu ligula. Duis rhoncus purus quis risus euismod, eget aliquam nibh dignissim. Donec sit amet ullamcorper ligula, at lobortis purus. Vestibulum quam sapien, dignissim eget neque imperdiet, gravida interdum erat. Donec a lacus ut orci viverra tempor.' ,
+                'Morbi eget mi convallis, dictum urna at, laoreet eros. Cras in ipsum et ligula finibus imperdiet. Sed semper porta lectus, at tristique massa dapibus quis. Aliquam luctus quam at ipsum egestas scelerisque. Mauris pulvinar commodo tempus. Maecenas quis leo quis elit molestie sagittis nec quis erat. Vivamus mollis luctus velit, dictum elementum elit cursus vitae. Curabitur lectus arcu, volutpat a neque sit amet, maximus condimentum turpis. Curabitur molestie at lorem vitae luctus. Sed dapibus neque tellus, nec vestibulum velit mattis ut. Sed dictum arcu ac magna aliquet, at dapibus nunc euismod. Mauris viverra eros diam, quis vehicula velit vehicula eu.' ,
+                'Ut non lectus massa. Maecenas viverra laoreet metus, eget facilisis justo consequat in. Sed at quam a dui rhoncus tincidunt. Duis ut purus nisi. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam purus neque, volutpat eu lectus at, sodales ullamcorper arcu. Donec rutrum felis id dui rhoncus, facilisis placerat sem faucibus. Proin luctus tristique sodales. Aliquam volutpat accumsan velit non commodo. Cras sagittis at metus eu malesuada. Cras enim lorem, egestas eget libero et, pulvinar tempor risus. Sed diam metus, auctor vitae convallis ut, porta sodales sapien. Aliquam eu leo at erat ultricies facilisis id ut odio. Aliquam rhoncus in urna consequat placerat.' ,
+                'Nulla interdum vestibulum dui, eget rhoncus felis. Donec ultricies mattis orci, sit amet placerat nisi mattis vehicula. Sed ut libero vel nunc feugiat interdum eu congue sem. Suspendisse vulputate vitae neque non dictum. Suspendisse quam ex, viverra vitae urna at, feugiat placerat ligula. In hac habitasse platea dictumst. Donec in nunc et nisi auctor iaculis venenatis vel felis.' ,
+                'Nullam velit diam, ullamcorper ac luctus in, ornare at quam. Nunc a lectus feugiat nulla consequat rutrum quis volutpat sapien. Ut imperdiet vehicula erat vel luctus. Nam venenatis gravida ante, eget congue ligula fringilla et. In efficitur erat id dapibus feugiat. Mauris rhoncus ex a ligula viverra rhoncus. Maecenas pulvinar interdum mi in tempor. Proin non rutrum sem, at dapibus mauris.' ,
+            ]
+    
+            for(var i = 0; i < paragraphs.length; i++ ) {
+                addParagraph(i);
+                // let p = document.createElement('p');
+                // p.innerHTML = paragraphs[i];
+                // document.querySelector('.paragraph').appendChild(p);
+            }
+            
+            function getParagraph() {
+                const selection = document.getElementById('selection').value;
+                document.querySelector('.paragraph').innerHTML = '';
+                console.log(selection);
+                if(selection < 4 ) {
+                    for(var i = 0; i <= parseInt(selection); i++) {
+                        console.log(i);
+                        addParagraph(i);
+                        // let p = document.createElement('p');
+                        // p.innerHTML = paragraphs[i];
+                        // document.querySelector('.paragraph').appendChild(p);
+                    }
+                } else {
+                    document.querySelector('.paragraph').innerHTML = "nice try";
+                }
+            }
+
+            function addParagraph(i) {
+                let p = document.createElement('p');
+                p.innerHTML = paragraphs[i];
+                document.querySelector('.paragraph').appendChild(p);
+            }
+        </script>
+    </body>
+</html>
